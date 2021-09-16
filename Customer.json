@@ -1,0 +1,35 @@
+[{
+     "firstName": "John",
+     "lastName": "Smith",
+     "purchasedate":"01/09/2021",
+     "amount":"4000089",
+     "products":
+     [
+         {
+           "type": "TV",
+           "serialnumber": "212 555-1234"
+         },
+         {
+           "type": "AC",
+           "serialnumber": "646 555-4567"
+         }
+     ]
+ },
+{
+     "firstName": "Marie",
+     "lastName": "Mathew",
+     "purchasedate":"01/09/2021",
+     "amount":"100587",
+     "products":
+     [
+         {
+           "type": "Mixer",
+           "serialnumber": "212 555-1245"
+         },
+         {
+           "type": "Washing Machine",
+           "serialnumber": "646 555-4570"
+         }
+     ]
+ }
+]
