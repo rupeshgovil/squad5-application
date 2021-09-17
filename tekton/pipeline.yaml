@@ -26,3 +26,17 @@ spec:
     workspaces:
       - name: output
         workspace: pipeline-shared-data
+  - name: build-and-push-image
+      runAfter:
+        - git-clone
+      taskRef:
+        kind: ClusterTask
+        name: buildah
+      params:
+        - name: IMAGE
+          value: "$(params.image-repo):$(tasks.clone-repository.results.commit)"
+      workspaces:
+        - name: source
+          workspace: pipeline-shared-data      
+    
+    
