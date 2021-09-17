@@ -1,0 +1,24 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: squad5-application-
+spec:
+  pipelineRef:
+    name: squad5-pipeline
+  # serviceAccountName: build-bot
+  # params:
+  #   - name: source-repo
+  #     value: https://github.com/zilkey/express-sample-app
+  #   - name: image-repo
+  #     value: quay.io/jeffdean/express-sample-app
+  #   - name: app-name
+  #     value: jeffdean-sample-app
+  workspaces:
+    - name: pipeline-shared-data
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi

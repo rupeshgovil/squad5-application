@@ -1,0 +1,28 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: squad5-pipeline
+spec:
+  workspaces:
+    - name: pipeline-shared-data
+  tasks:
+  - name: git-clone
+    params:
+    - name: url
+      value: https://github.com/rupeshgovil/squad5-application.git
+    - name: submodules
+      value: "true"
+    - name: depth
+      value: "1"
+    - name: sslVerify
+      value: "true"
+    - name: deleteExisting
+      value: "true"
+    - name: verbose
+      value: "true"
+    taskRef:
+      kind: ClusterTask
+      name: git-clone
+    workspaces:
+      - name: output
+        workspace: pipeline-shared-data
