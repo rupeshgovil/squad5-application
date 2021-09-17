@@ -5,12 +5,12 @@ metadata:
 spec:
   pipelineRef:
     name: squad5-pipeline
-  # serviceAccountName: build-bot
-    params:
+  serviceAccountName: build-bot
+  params:
   #   - name: source-repo
   #     value: https://github.com/zilkey/express-sample-app
-      - name: image-repo
-        value: quay.io/upslopeio/nginx-unprivileged
+    - name: image-repo
+      value: quay.io/rupesh_govil_ibm/squad5-application
   #   - name: app-name
   #     value: jeffdean-sample-app
   workspaces:
