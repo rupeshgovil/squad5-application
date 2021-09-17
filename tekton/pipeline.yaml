@@ -5,6 +5,10 @@ metadata:
 spec:
   workspaces:
     - name: pipeline-shared-data
+  params:
+    - name: image-repo
+      type: string
+      description: Docker image repository
   tasks:
   - name: git-clone
     params:
@@ -27,17 +31,14 @@ spec:
       - name: output
         workspace: pipeline-shared-data
   - name: build-and-push-image
-      runAfter:
+    runAfter:
         - git-clone
-      taskRef:
+    taskRef:
         kind: ClusterTask
         name: buildah
-      params:
-	- name: image-repo
-	  type: string
-	  description: Docker image repository
+    params:
         - name: IMAGE
-          value: "$(params.image-repo):$(tasks.clone-repository.results.commit)"
-      workspaces:
+          value: "$(params.image-repo):$(tasks.git-clone.results.commit)"
+    workspaces:
         - name: source
           workspace: pipeline-shared-data      
