@@ -33,10 +33,11 @@ spec:
         kind: ClusterTask
         name: buildah
       params:
+	- name: image-repo
+	  type: string
+	  description: Docker image repository
         - name: IMAGE
           value: "$(params.image-repo):$(tasks.clone-repository.results.commit)"
       workspaces:
         - name: source
           workspace: pipeline-shared-data      
-    
-    
